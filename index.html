@@ -3,27 +3,65 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Countries Table View</title>
+    <title>Countries Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link href="styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="container mt-4">
-      <h2 class="text-center mb-4">World Countries Data</h2>
+  <body class="app-bg">
+    <div class="container py-4 py-md-5">
+      <section class="hero mb-4">
+        <p class="hero-kicker mb-2">Global Snapshot</p>
+        <h1 class="hero-title mb-3">World Countries Explorer</h1>
+        <p class="hero-subtitle mb-0">
+          Search by country name and filter by region with smooth interactions.
+        </p>
+      </section>
+
+      <section class="controls mb-4">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-7">
+            <label for="searchInput" class="form-label mb-1">Search Country</label>
+            <input
+              type="search"
+              id="searchInput"
+              class="form-control form-control-lg"
+              placeholder="Type a country name..."
+            />
+          </div>
+          <div class="col-8 col-md-3">
+            <label for="regionFilter" class="form-label mb-1">Region</label>
+            <select id="regionFilter" class="form-select form-select-lg">
+              <option value="all">All Regions</option>
+            </select>
+          </div>
+          <div class="col-4 col-md-2 d-grid">
+            <label class="form-label mb-1 opacity-0">Reset</label>
+            <button id="clearFilters" class="btn btn-reset">Clear</button>
+          </div>
+        </div>
+        <p id="resultCount" class="result-count mt-3 mb-0">Loading countries...</p>
+      </section>
 
       <!-- Loader -->
       <div id="loader" class="d-flex justify-content-center align-items-center mb-3">
-        <div class="spinner-border text-primary" role="status">
+        <div class="spinner-border text-info" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
 
       <!-- Table -->
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle text-center">
-          <thead class="table-primary">
+      <div class="table-wrap table-responsive">
+        <table class="table align-middle text-center mb-0">
+          <thead>
             <tr>
               <th>Flag</th>
               <th>Country Name</th>
